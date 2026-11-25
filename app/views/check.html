@@ -1,0 +1,88 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Check your answers" %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/goose-date"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Check details and record your goose sighting</h1>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Do you like geese?"
+          },
+          value: {
+            text: "Yes" if data.gooseLiked == "yes" else "No"
+          },
+          actions: {
+            items: [
+              {
+                href: "/goose-liked",
+                text: "Change",
+                visuallyHiddenText: "whether you like geese"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "What type of goose did you see?"
+          },
+          value: {
+            text: data.gooseType
+          },
+          actions: {
+            items: [
+              {
+                href: "/goose-type",
+                text: "Change",
+                visuallyHiddenText: "the type of goose you saw"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "When did you see the goose?"
+          },
+          value: {
+            text: data["goose-date-day"] | formatDate(data["goose-date-month"], data["goose-date-year"])
+          },
+          actions: {
+            items: [
+              {
+                href: "/goose-date",
+                text: "Change",
+                visuallyHiddenText: "the date you saw the goose"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <p class="govuk-body">By sending this you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+    <form action="/confirmation" method="post" novalidate>
+
+      {{ govukButton({
+        text: "Accept and record goose sighting"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

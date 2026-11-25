@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Goose sighting recorded" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukPanel({
+      titleText: "Goose sighting recorded",
+      html: "Your reference number<br><strong>HDJ2123F</strong>"
+    }) }}
+
+    <p class="govuk-body">We’ve received your goose sighting.</p>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p class="govuk-body">We’ll take a look and may contact you if we need more information.</p>
+
+    <p class="govuk-body">
+      <a class="govuk-link" href="/goose-liked">Record another goose sighting</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}

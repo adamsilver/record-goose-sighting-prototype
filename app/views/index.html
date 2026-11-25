@@ -1,19 +1,67 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% set pageName = "Record a goose sighting" %}
+
+{% block containerStart %}
+  {{ govukBreadcrumbs({
+    items: [
+      { text: "Home", href: "#" },
+      { text: "Environment and Countryside", href: "#" },
+      { text: "Wildlife and Biodiversity" }
+    ]
+  }) }}
+{% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+    <h1 class="govuk-heading-xl">Record a goose sighting</h1>
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
+    <p class="govuk-body">Use this service to:</p>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <ul class="govuk-list govuk-list--bullet">
+      <li>tell us if you like geese</li>
+      <li>tell us what type of goose you saw</li>
+      <li>the date on which you saw the goose</li>
+    </ul>
+
+    {{ govukButton({
+      text: "Start now",
+      href: "/goose-liked",
+      isStartButton: true
+    }) }}
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        Information about Geese
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          <li>
+            <a href="#">
+              Read about geese on Wikipedia
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Visit the RSPB website
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              More information about geese
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
   </div>
 </div>
 
